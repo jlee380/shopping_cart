@@ -3,29 +3,34 @@ import React from 'react';
 
 class Counter extends React.Component {
     state = {
-        count: 0
+        value: this.props.value
     }
 
     handlePlus = () => {
         this.setState({
-            count: this.state.count + 1
+            value: this.state.value + 1
         });
     }
 
     handleMinus = () => {
         this.setState({
-            count: this.state.count - 1
+            value: this.state.value - 1
         });
     }
 
-        render() {
-            return(
-                <div>
-                    <span>{this.state.count}</span>                
-                    <button onClick={this.handlePlus}>+</button>
-                    <button onClick={this.handleMinus}>-</button>
-                </div>
-            );
+    counterFormat = () => {
+        const { value } = this.state;
+        return value === 0 ? "ZERO" : value;
+    }
+
+    render() {
+        return(
+            <div>
+                <span>{this.counterFormat()}</span>                
+                <button onClick={this.handlePlus}>+</button>
+                <button onClick={this.handleMinus}>-</button>
+            </div>
+        );
     }
 }
 

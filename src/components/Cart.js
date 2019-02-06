@@ -4,12 +4,23 @@ import Counter from './Counter';
 
 
 class Cart extends Component {
+    state = {
+        counters: [
+            { id: 1, value: 0 },
+            { id: 2, value: 0 },
+            { id: 3, value: 0 } 
+        ]
+    }
     render() {
         return(
             <div>
                 <Header>Total Number</Header>
                 <button>reset</button>
-                <Counter></Counter>
+                {
+                    this.state.counters.length === 0 ? "Error" : this.state.counters.map(counter => (
+                        <Counter value={counter.value} key={counter.id} />
+                    ))
+                }
             </div>
         );
     }
