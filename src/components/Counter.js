@@ -29,6 +29,7 @@ class Counter extends React.Component {
                 <span>{this.counterFormat()}</span>                
                 <button onClick={this.handlePlus}>+</button>
                 <button onClick={this.handleMinus}>-</button>
+                <button onClick={() => this.props.onDelete(this.props.id)}>Delete</button>
             </div>
         );
     }
