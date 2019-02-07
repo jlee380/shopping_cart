@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button, Label } from 'semantic-ui-react';
 
 class Counter extends React.Component {
     state = {
@@ -23,13 +23,19 @@ class Counter extends React.Component {
         return value === 0 ? "ZERO" : value;
     }
 
+    styles = {
+        margin: '10px',
+    }
+
     render() {
+        let colors = this.state.value === 0 ? 'yellow' : 'black';
+
         return(
             <div>
-                <span>{this.counterFormat()}</span>                
-                <button onClick={this.handlePlus}>+</button>
-                <button onClick={this.handleMinus}>-</button>
-                <button onClick={() => this.props.onDelete(this.props.id)}>Delete</button>
+                <Label as='a' color={colors} tag>{this.counterFormat()}</Label>                
+                <Button style={this.styles} onClick={this.handlePlus}>+</Button>
+                <Button style={this.styles} onClick={this.handleMinus}>-</Button>
+                <Button basic color='red' onClick={() => this.props.onDelete(this.props.id)}>Delete</Button>
             </div>
         );
     }

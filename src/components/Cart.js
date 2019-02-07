@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from './Header';
 import Counter from './Counter';
+import { Button } from 'semantic-ui-react';
 
 
 class Cart extends Component {
@@ -23,14 +24,19 @@ class Cart extends Component {
         this.setState({ counters: [...this.state.counters, { id: newId, value: 0}] })
     }
 
+    styles = {
+        margin: '30px',
+        padding: '100px'
+    }
+
     render() {
         return(
             <div>
                 <Header>Total Number</Header>
-                <button>reset</button>
-                <button onClick={this.handleAdd}>Add</button>
+                <Button basic color='black' content='Reset' />
+                <Button basic color='green' content='Add' onClick={this.handleAdd} />
                 {
-                    this.state.counters.length === 0 ? "Error" : this.state.counters.map(counter => (
+                    this.state.counters.length === 0 ? "Empty" : this.state.counters.map(counter => (
                         <Counter value={counter.value} key={counter.id} id={counter.id} onDelete={this.handleDelete} />
                     ))
                 }
