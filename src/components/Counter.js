@@ -24,7 +24,7 @@ class Counter extends React.Component {
                 </Button>
                 <Button
                     style={this.styles}
-                    onClick={this.handleMinus}
+                    onClick={() => this.props.onDecrement(this.props.counter)}
                 >-
                 </Button>
                 <Button

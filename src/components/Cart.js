@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Header } from './Header';
 import Counter from './Counter';
 import { Button } from 'semantic-ui-react';
 
@@ -14,9 +13,12 @@ class Cart extends Component {
         ]
     }
 
-    // componentDidMount() {
-    //     const url = 'http://10.2.204.26:3000/';
-    // }
+    async componentDidMount() {
+        const url = 'http://10.2.204.26:3000/';
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+    }
 
     handleDelete = (counterId) => {
         const counters = this.state.counters.filter((c) => c.id !== counterId);
@@ -47,6 +49,15 @@ class Cart extends Component {
         this.setState({ counters });
     }
 
+    handleDecrement = (counter) => {
+        const counters = [...this.state.counters];
+        const index = counters.indexOf(counter);
+        counters[index] = {...counter}
+        counters[index].value--;
+        
+        this.setState({ counters });
+    }
+
     styles = {
         margin: '30px',
         padding: '100px'
@@ -57,7 +68,6 @@ class Cart extends Component {
                 <div>
                     {this.state.loading ? <div>loading...</div> : 
                         <div>
-                        <Header>Total Number</Header>
                         <Button 
                             onClick={this.handleReset}
                             basic color='black'
@@ -74,6 +84,7 @@ class Cart extends Component {
                                 key={counter.id}
                                 onDelete={this.handleDelete}
                                 onIncrement={this.handleIncrement}
+                                onDecrement={this.handleDecrement}
                                 counter={counter}
                             />
                         ))
