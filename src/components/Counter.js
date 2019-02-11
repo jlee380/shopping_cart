@@ -13,23 +13,23 @@ class Counter extends React.Component {
 
     render() {
         let colors = this.props.counter.value === 0 ? 'yellow' : 'black';
-
+        let { handleIncrement, handleDecrement, handleDelete, counter } = this.props;
         return(
             <div>
                 <Label as='a' color={colors} tag>{this.counterFormat()}</Label>                
                 <Button
                     style={this.styles}
-                    onClick={() => this.props.onIncrement(this.props.counter)}
+                    onClick={() => handleIncrement(counter)}
                 >+
                 </Button>
                 <Button
                     style={this.styles}
-                    onClick={() => this.props.onDecrement(this.props.counter)}
+                    onClick={() => handleDecrement(counter)}
                 >-
                 </Button>
                 <Button
                     basic color='red'
-                    onClick={() => this.props.onDelete(this.props.counter.id)}
+                    onClick={() => handleDelete(counter.id)}
                 >Delete
                 </Button>
             </div>
