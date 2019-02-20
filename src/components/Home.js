@@ -15,18 +15,16 @@ class Home extends Component {
     state = {
         loading: 0,
         counters: [
-            { id: 1, value: 0 },
-            { id: 2, value: 0 },
-            { id: 3, value: 0 } 
+            { id: 0, value: 1 },
         ]
     }
 
-    async componentDidMount() {
-        const url = 'http://10.2.204.26:3000/';
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-    }
+    // async componentDidMount() {
+    //     const url = 'http://ec2-13-58-24-120.us-east-2.compute.amazonaws.com/';
+    //     const response = await fetch(url).then()
+    //     const counters = await response.json();
+    //     console.log(data);
+    // }
 
     handleDelete = (counterId) => {
         const counters = this.state.counters.filter((c) => c.id !== counterId);
