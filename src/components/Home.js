@@ -5,20 +5,15 @@ import { Wrapper } from './Wrapper';
 import { Div } from './Div';
 import Cart from './Cart';
 import Navbar from './Navbar';
+import { connect } from 'react-redux';
 // import CustomApp from './CustomApp';
+import { handleAdd } from '../actions/index';
 
 const theme = {
     
 };
 
 class Home extends Component {
-    state = {
-        loading: 0,
-        counters: [
-            { id: 0, value: 1 },
-        ]
-    }
-
     // async componentDidMount() {
     //     const url = 'http://ec2-13-58-24-120.us-east-2.compute.amazonaws.com/';
     //     const response = await fetch(url).then()
@@ -31,11 +26,11 @@ class Home extends Component {
         this.setState({ counters })
     }
 
-    handleAdd = () => {
-        const newId = this.state.counters.length + 1;
-
-        this.setState({ counters: [...this.state.counters, { id: newId, value: 0}] })
-    }
+    // handleAdd = () => {
+    //     const newId = this.props.counters.length + 1;
+        
+    //     this.setState({ counters: [...this.props.counters, { id: newId, value: 0}] })
+    // }
 
     handleReset = () => {
         const counters = this.state.counters.map((counter) => {
@@ -64,20 +59,21 @@ class Home extends Component {
         this.setState({ counters });
     }
     render() {
+        const { counters, loading } = this.props;
         return (
             <ThemeProvider theme={theme}>
                 <div>
                     <Wrapper>
                         <Div>
                             {/* <CustomApp> */}
-                                <Navbar counters={this.state.counters}></Navbar>
+                                <Navbar counters={counters}></Navbar>
                                 <Cart
-                                    loading={this.state.loading}
-                                    counters={this.state.counters}
+                                    loading={loading}
+                                    counters={counters}
                                     handleReset={this.handleReset}
                                     handleIncrement={this.handleIncrement}
                                     handleDecrement={this.handleDecrement}
-                                    handleAdd={this.handleAdd}
+                                    handleAdd={this.props.handleAdd}
                                     handleDelete={this.handleDelete}
                                 />
                             {/* </CustomApp> */}
@@ -89,4 +85,14 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return { counters: state.counters };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleAdd: () => dispatch(handleAdd()),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
