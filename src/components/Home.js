@@ -7,7 +7,7 @@ import Cart from './Cart';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
 // import CustomApp from './CustomApp';
-import { handleAdd } from '../actions/index';
+import { handleAdd, handleDelete, handleReset } from '../actions/actions';
 
 const theme = {
     
@@ -21,43 +21,42 @@ class Home extends Component {
     //     console.log(data);
     // }
 
-    handleDelete = (counterId) => {
-        const counters = this.state.counters.filter((c) => c.id !== counterId);
-        this.setState({ counters })
-    }
+    // handleDelete = (counterId) => {
+    //     const counters = this.state.counters.filter((c) => c.id !== counterId);
+    //     this.setState({ counters })
+    // }
 
     // handleAdd = () => {
     //     const newId = this.props.counters.length + 1;
         
     //     this.setState({ counters: [...this.props.counters, { id: newId, value: 0}] })
     // }
-
-    handleReset = () => {
-        const counters = this.state.counters.map((counter) => {
-            counter.value = 0;
-            return counter;
-        });
+    // handleReset = () => {
+    //     const counters = this.state.counters.map((counter) => {
+    //         counter.value = 0;
+    //         return counter;
+    //     });
  
-        this.setState({ counters });
-    }
+    //     this.setState({ counters });
+    // }
 
-    handleIncrement = (counter) => {
-        const counters = [...this.state.counters];
-        const index = counters.indexOf(counter);
-        counters[index] = {...counter};
-        counters[index].value++;
+    // handleIncrement = (counter) => {
+    //     const counters = [...this.state.counters];
+    //     const index = counters.indexOf(counter);
+    //     counters[index] = {...counter};
+    //     counters[index].value++;
 
-        this.setState({ counters });
-    }
+    //     this.setState({ counters });
+    // }
 
-    handleDecrement = (counter) => {
-        const counters = [...this.state.counters];
-        const index = counters.indexOf(counter);
-        counters[index] = {...counter}
-        counters[index].value--;
+    // handleDecrement = (counter) => {
+    //     const counters = [...this.state.counters];
+    //     const index = counters.indexOf(counter);
+    //     counters[index] = {...counter}
+    //     counters[index].value--;
         
-        this.setState({ counters });
-    }
+    //     this.setState({ counters });
+    // }
     render() {
         const { counters, loading } = this.props;
         return (
@@ -70,11 +69,11 @@ class Home extends Component {
                                 <Cart
                                     loading={loading}
                                     counters={counters}
-                                    handleReset={this.handleReset}
-                                    handleIncrement={this.handleIncrement}
-                                    handleDecrement={this.handleDecrement}
+                                    handleReset={this.props.handleReset}
+                                    handleIncrement={this.props.handleIncrement}
+                                    handleDecrement={this.props.handleDecrement}
                                     handleAdd={this.props.handleAdd}
-                                    handleDelete={this.handleDelete}
+                                    handleDelete={this.props.handleDelete}
                                 />
                             {/* </CustomApp> */}
                         </Div>
@@ -92,6 +91,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleAdd: () => dispatch(handleAdd()),
+        handleDelete: (counterId) => dispatch(handleDelete(counterId)),
+        handleReset: () => dispatch(handleReset()),
+
     };
 }
 

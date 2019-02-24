@@ -29,7 +29,7 @@ class Cart extends Component {
                         counters.length === 0 ? "Empty" : counters.map(counter => (
                             <Counter
                                 key={counter.id}
-                                onDelete={handleDelete}
+                                handleDelete={handleDelete}
                                 handleIncrement={handleIncrement}
                                 handleDecrement={handleDecrement}
                                 counter={counter}

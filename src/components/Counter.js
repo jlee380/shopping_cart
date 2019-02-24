@@ -12,8 +12,8 @@ class Counter extends React.Component {
     }
 
     render() {
-        let colors = this.props.counter.value === 0 ? 'yellow' : 'black';
-        let { handleIncrement, handleDecrement, handleDelete, counter } = this.props;
+        const colors = this.props.counter.value === 0 ? 'yellow' : 'black';
+        const { handleIncrement, handleDecrement, handleDelete, counter } = this.props;
         return(
             <div>
                 <Label as='a' color={colors} tag>{this.counterFormat()}</Label>                
