@@ -1,4 +1,4 @@
-import { ADD_COUNTERS, RESET_COUNTERS, DELETE_COUNTERS } from '../constants/action-types';
+import { ADD_COUNTERS, RESET_COUNTERS, DELETE_COUNTERS, DECREMENT_COUNTERS, INCREMENT_COUNTERS } from '../constants/action-types';
 const initialState = {
     loading: 0,
     counters: [
@@ -23,15 +23,32 @@ const rootReducer = (state = initialState, action) => {
               counters: state.counters.filter((counter) => counter.id !== action.counterId)
             }
         case RESET_COUNTERS:
-            // const newState = [...state];
-            
             return {
               ...state,
               counters: state.counters.map((counter) => {
                 return counter = { ...counter, value: 0 }
               })
-              // counters: state.counters.map((c) => c.value)
             }
+        case INCREMENT_COUNTERS:
+            const increCounters = [...state.counters];
+            const increIndex = increCounters.indexOf(action.counter);
+            increCounters[increIndex] = {...action.counter};
+            increCounters[increIndex].value++
+            return {
+              ...state,
+              counters: increCounters
+            }
+              
+            
+        case DECREMENT_COUNTERS:
+            const decreCounters = [...state.counters];
+            const decreIndex = decreCounters.indexOf(action.counter);
+            decreCounters[decreIndex] = {...action.counter};
+            decreCounters[decreIndex].value--
+            return {
+              ...state,
+              counters: decreCounters
+        }
           default:
             return state
         }

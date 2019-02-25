@@ -7,7 +7,7 @@ import Cart from './Cart';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
 // import CustomApp from './CustomApp';
-import { handleAdd, handleDelete, handleReset } from '../actions/actions';
+import { handleAdd, handleDelete, handleReset, handleDecrement, handleIncrement } from '../actions/actions';
 
 const theme = {
     
@@ -93,7 +93,8 @@ const mapDispatchToProps = (dispatch) => {
         handleAdd: () => dispatch(handleAdd()),
         handleDelete: (counterId) => dispatch(handleDelete(counterId)),
         handleReset: () => dispatch(handleReset()),
-
+        handleIncrement: (counterId) => dispatch(handleIncrement(counterId)),
+        handleDecrement: (counterId) => dispatch(handleDecrement(counterId)),
     };
 }
 
