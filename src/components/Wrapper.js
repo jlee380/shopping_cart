@@ -8,5 +8,5 @@ export const Wrapper = styled.div`
     grid-template-areas: 
         ". a a ."
         ". a a .";
-
+    
 `;
