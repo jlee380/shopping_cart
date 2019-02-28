@@ -6,7 +6,7 @@ import { Div } from './Div';
 import Cart from './Cart';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
-import { handleAdd, handleDelete, handleReset, handleDecrement, handleIncrement } from '../actions/actions';
+import { handleAdd, handleDelete, handleReset, handleDecrement, handleIncrement } from '../../actions/actions';
 
 const theme = {
 };

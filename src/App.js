@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Home from './components/Home';
+import Home from './components/shopping_cart/Home';
 import Test from './components/Test';
-import Products from './components/Products';
+import Products from './components/shopping_cart/Products';
 import Toolbar from './components/Toolbar/Toolbar';
 
 class App extends Component {
