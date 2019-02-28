@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Wrapper } from './Wrapper';
 import { Div } from './Div';
-import Cart from './Cart';
+import Cart from './Counters';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
 import { handleAdd, handleDelete, handleReset, handleDecrement, handleIncrement } from '../../actions/actions';

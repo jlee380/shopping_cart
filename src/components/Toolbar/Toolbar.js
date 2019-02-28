@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Toolbar.css';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default class Toolbar extends Component {
@@ -13,11 +14,11 @@ export default class Toolbar extends Component {
       <div className="navDiv">
         <nav className="mainNav">
           <ul className="ul">
-            <li><a>Home</a></li>
-            <li><a>Product</a></li>
-            <li><a>New</a></li>
-            <li><a>New</a></li>
-            <li><a>New</a></li>
+            <li><Link to='/mainHome'>Home</Link></li>
+            <li><Link to='/projects'>Projects</Link></li>
+            <li><Link to='/home'>New</Link></li>
+            <li><Link to='/'>New</Link></li>
+            <li><Link to='/'>New</Link></li>
           </ul>
         </nav>
       </div>
