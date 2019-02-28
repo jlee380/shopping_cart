@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { handleAdd, handleDelete, handleReset, handleDecrement, handleIncrement } from '../../actions/actions';
 
 const theme = {
-    bg: '#001f3f',
 };
 
 class Home extends Component {
