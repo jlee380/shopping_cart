@@ -1,52 +1,49 @@
-
 .mainNav {
   /* font-family: "Gill Sans", sans-serif; */
-  font: 1.2em "Fira Sans", sans-serif;
-  font-weight: 300;
-  background: #283E51;  /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(to right, #4B79A1, #283E51);
-  background: linear-gradient(to right, #4B79A1, #283E51);  */
-  
+  font: 1em "Fira Sans", sans-serif;
+  font-weight: bold;
+  background: #283E51;
 }
 
 ul {
   margin: 0;
   padding: 0;
+  height: 2em;
 }
 
 .ul {
-  display: flex;
+  display: flex; 
   flex-direction: row;
   justify-content: center;
 }
 
 li {
-  margin: 20px;
+  margin: 5px 60px 60px 5px;
   list-style-type: none;
 }
 
 li a {
   /* padding: 0.5rem 1.5rem 0.5rem 1.5rem; */
-  color: white;
+  color: #EAEAEA;
   /* border: 1px solid #B2FEFA; */
   /* border-radius: 5px; */
 }
 
+li a:hover {
+  color: #6DD5FA;
+}
+
 li a:hover:after {
     position: relative;
-    margin-top: 10px;
+    margin-top: 6px;
     content: "";
     display: block;
     width: 100%;
     border-bottom: 3px solid;
-  /* background: black; */
-  /* background: #B2FEFA; */
-  /* color: #283E51; */
+    color: #6DD5FA;
 }
 
-li span:hover {
   
-}
 
 /* 
 * {
