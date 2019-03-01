@@ -18,7 +18,6 @@ class App extends Component {
               <Route path="/test" component={Test} />
               <Route path="/Projects" component={Projects} />
               <Route path="/Home" component={Home} />
-
           </div>
         </BrowserRouter>
       </div>
